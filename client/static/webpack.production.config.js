@@ -46,7 +46,7 @@ module.exports = {
 						}
 					],
 					fallback: 'style-loader',
-					publicPath: '../build'
+					publicPath: '../build/'
 				})
 			}
 		]
