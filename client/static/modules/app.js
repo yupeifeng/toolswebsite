@@ -9,12 +9,13 @@ import './css/main.css';
 import './MD5/reducer';
 import './Qrcode/reducer';
 import './Regular/reducer';
+import './WebCam/reducer';
 import { Store } from 'reducermanager';
 
 const MD5 = asyncComponent(() => import(/* webpackChunkName: 'MD5' */ './MD5'));
 const Qrcode = asyncComponent(() => import(/* webpackChunkName: 'Qrcode' */ './Qrcode'));
 const Regular = asyncComponent(() => import(/* webpackChunkName: 'Regular' */ './Regular'));
-
+const WebCam = asyncComponent(() => import(/* webpackChunkName: 'WebCam' */ './WebCam'));
 const AboutMe = asyncComponent(() => import(/* webpackChunkName: 'AboutMe' */ './AboutMe'));
 
 let debug = false;
@@ -28,6 +29,7 @@ const router = Store.createStore(
 				<Route exact path="/tools/MD5" component={MD5} />
 				<Route exact path="/tools/Qrcode" component={Qrcode} />
 				<Route exact path="/tools/Regular" component={Regular} />
+				<Route exact path="/tools/WebCam" component={WebCam} />
 				<Route exact path="/about/me" component={AboutMe} />
 				{debug ? Store.getDevTools() : null}
 			</div>

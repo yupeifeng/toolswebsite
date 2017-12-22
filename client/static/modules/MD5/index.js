@@ -29,10 +29,10 @@ export default class MD5 extends React.Component {
 						<Input
 							placeholder="请输入要加密的字符串"
 							value={that.props.mD5Store.md5String}
-							onChange={that._onChangeMd5String.bind(that)}
+							onChange={() => that._onChangeMd5String()}
 						/>
 					</div>
-					<Button type="primary" onClick={that._Md5Code.bind(that)}>
+					<Button type="primary" onClick={() => that._Md5Code()}>
 						点击测试
 					</Button>
 					<div>

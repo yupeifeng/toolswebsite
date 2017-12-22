@@ -46,10 +46,10 @@ export default class Qrcode extends React.Component {
 						<Input
 							placeholder="请输入需要生成二维码地址"
 							value={that.props.qrcodeStore.qrcodeString}
-							onChange={that._onChangeQrcodeString.bind(that)}
+							onChange={() => that._onChangeQrcodeString()}
 						/>
 					</div>
-					<Button type="primary" onClick={that._createQrcode.bind(that)}>
+					<Button type="primary" onClick={() => that._createQrcode()}>
 						点击生成
 					</Button>
 					<div>

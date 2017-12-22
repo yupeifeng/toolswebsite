@@ -66,6 +66,9 @@ export default class SiderMenu extends React.Component {
 						<Menu.Item key="/tools/Regular">
 							<a href="#/tools/Regular">正则校验</a>
 						</Menu.Item>
+						<Menu.Item key="/tools/WebCam">
+							<a href="#/tools/WebCam">web拍照</a>
+						</Menu.Item>
 					</SubMenu>
 					<SubMenu
 						key="/about"
