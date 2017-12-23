@@ -2,7 +2,11 @@ import { store, storeProps, storeDestroy } from 'reducermanager';
 
 @store('webCamStore')
 class webCamStore {
-	@storeProps('change_imgUrl')
+	@storeProps('change_uploadImgUrl')
 	@storeDestroy
-	static imgUrl = '';
+	static uploadImgUrl = '';
+
+	@storeProps('change_compareResult')
+	@storeDestroy
+	static compareResult = '';
 }

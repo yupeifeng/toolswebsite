@@ -21,3 +21,36 @@ html, body {
     margin: 16px 28px 16px 0;
     float: left;
 }
+
+.avatar-uploader,
+.avatar-uploader-trigger,
+.avatar {
+    width: 150px;
+    height: 150px;
+}
+
+.avatar-uploader {
+    display: block;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.anticon {
+    display: table-cell !important;
+    font-style: normal;
+    vertical-align: middle !important;
+    text-align: center;
+    text-transform: none;
+    line-height: 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.avatar-uploader-trigger {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 28px;
+    color: #999;
+}

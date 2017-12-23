@@ -1,8 +1,9 @@
 import React from 'react';
-import { Layout, Breadcrumb, Button } from 'antd';
+import { Layout, Breadcrumb, Button, Icon, Upload } from 'antd';
 import './action';
 import { ConnectStore, actionInjection } from 'reducermanager';
 import $script from 'scriptjs';
+import modalTip from 'modalTip';
 
 const { Content } = Layout;
 /**
@@ -35,23 +36,70 @@ export default class WebCam extends React.Component {
 			<Layout style={{ padding: '0 24px 24px' }}>
 				<Breadcrumb style={{ margin: '12px 0' }}>
 					<Breadcrumb.Item>工具</Breadcrumb.Item>
-					<Breadcrumb.Item>web拍照</Breadcrumb.Item>
+					<Breadcrumb.Item>人脸对比</Breadcrumb.Item>
 				</Breadcrumb>
 				<Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+					<Upload
+						className="avatar-uploader"
+						name="avatar"
+						showUploadList={false}
+						action="//jsonplaceholder.typicode.com/posts/"
+						beforeUpload={file => that._beforeUpload(file)}
+						onChange={info => that._handleChange(info)}>
+						{that.props.webCamStore.uploadImgUrl ? (
+							<img src={that.props.webCamStore.uploadImgUrl} alt="" className="avatar" />
+						) : (
+							<Icon type="plus" className="avatar-uploader-trigger" />
+						)}
+					</Upload>
 					<div id="Webcam" />
 					<Button type="primary" onClick={() => that._getWebcamPic()}>
-						点击拍照
+						人脸对比
 					</Button>
-					<div>{that.props.webCamStore.imgUrl ? <img src={that.props.webCamStore.imgUrl} /> : null}</div>
+					<div>{that.props.webCamStore.compareResult}</div>
 				</Content>
 			</Layout>
 		);
 	}
 
+	_beforeUpload(file) {
+		let isJPG = file.type === 'image/jpeg';
+		if (!isJPG) {
+			modalTip.successTip('You can only upload JPG file!');
+		}
+		const isLt2M = file.size / 1024 / 1024 < 2;
+		if (!isLt2M) {
+			modalTip.successTip('Image must smaller than 2MB!');
+		}
+		return isJPG && isLt2M;
+	}
+
+	_handleChange(info) {
+		let that = this;
+		if (info.file.status === 'done') {
+			let img = info.file.originFileObj;
+			let reader = new FileReader();
+			reader.addEventListener('load', () => {
+				that.props.changeUploadImgUrl(reader.result);
+			});
+			reader.readAsDataURL(img);
+		}
+	}
+
 	_getWebcamPic() {
 		let that = this;
 		Webcam.snap(data_uri => {
-			that.props.changeImgUrl(data_uri);
+			if (!that.props.webCamStore.uploadImgUrl) {
+				modalTip.successTip('请上传对比图片');
+				return;
+			}
+
+			if (!data_uri) {
+				modalTip.successTip('请打开摄像头');
+				return;
+			}
+
+			that.props.compareImg(that.props.webCamStore.uploadImgUrl, data_uri);
 		});
 	}
 }
