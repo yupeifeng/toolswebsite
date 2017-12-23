@@ -39,7 +39,7 @@ export default class WebCam extends React.Component {
 					<Breadcrumb.Item>人脸对比</Breadcrumb.Item>
 				</Breadcrumb>
 				<Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-					{/*<Upload
+					<Upload
 						className="avatar-uploader"
 						name="avatar"
 						showUploadList={false}
@@ -51,9 +51,8 @@ export default class WebCam extends React.Component {
 						) : (
 							<Icon type="plus" className="avatar-uploader-trigger" />
 						)}
-					</Upload>*/}
+					</Upload>
 					<div id="Webcam" />
-					<div>{that.props.webCamStore.uploadImgUrl ? <img src={that.props.webCamStore.uploadImgUrl} /> : null}</div>
 					<Button type="primary" onClick={() => that._getWebcamploadImgUrl()}>
 						拍照
 					</Button>
@@ -66,29 +65,29 @@ export default class WebCam extends React.Component {
 		);
 	}
 
-	/*_beforeUpload(file) {
-        let isJPG = file.type === 'image/jpeg';
-        if (!isJPG) {
-            modalTip.successTip('You can only upload JPG file!');
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2;
-        if (!isLt2M) {
-            modalTip.successTip('Image must smaller than 2MB!');
-        }
-        return isJPG && isLt2M;
-    }
+	_beforeUpload(file) {
+		let isJPG = file.type === 'image/jpeg';
+		if (!isJPG) {
+			modalTip.successTip('You can only upload JPG file!');
+		}
+		const isLt2M = file.size / 1024 / 1024 < 2;
+		if (!isLt2M) {
+			modalTip.successTip('Image must smaller than 2MB!');
+		}
+		return isJPG && isLt2M;
+	}
 
-    _handleChange(info) {
-        let that = this;
-        if (info.file.status === 'done') {
-            let img = info.file.originFileObj;
-            let reader = new FileReader();
-            reader.addEventListener('load', () => {
-                that.props.changeUploadImgUrl(reader.result);
-            });
-            reader.readAsDataURL(img);
-        }
-    }*/
+	_handleChange(info) {
+		let that = this;
+		if (info.file.status === 'done') {
+			let img = info.file.originFileObj;
+			let reader = new FileReader();
+			reader.addEventListener('load', () => {
+				that.props.changeUploadImgUrl(reader.result);
+			});
+			reader.readAsDataURL(img);
+		}
+	}
 
 	_getWebcamploadImgUrl() {
 		let that = this;
@@ -101,7 +100,7 @@ export default class WebCam extends React.Component {
 		let that = this;
 		Webcam.snap(data_uri => {
 			if (!that.props.webCamStore.uploadImgUrl) {
-				modalTip.successTip('请拍取对比图片');
+				modalTip.successTip('请拍取对比图片或者上传图片');
 				return;
 			}
 
