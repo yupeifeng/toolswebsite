@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Breadcrumb, Button, Icon, Upload } from 'antd';
+import { Layout, Breadcrumb, Button, Icon, Upload, Alert } from 'antd';
 import './action';
 import { ConnectStore, actionInjection } from 'reducermanager';
 import $script from 'scriptjs';
@@ -39,6 +39,9 @@ export default class WebCam extends React.Component {
 					<Breadcrumb.Item>人脸对比</Breadcrumb.Item>
 				</Breadcrumb>
 				<Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+					<div>
+						<Alert message="请尽量贴近人脸！！！！！！！！！！！！" type="warning" />
+					</div>
 					<Upload
 						className="avatar-uploader"
 						name="avatar"
@@ -59,7 +62,10 @@ export default class WebCam extends React.Component {
 					<Button type="primary" onClick={() => that._getWebcamPic()}>
 						人脸对比
 					</Button>
-					<div>{that.props.webCamStore.compareResult}</div>
+					<div>
+						<span>匹配结果</span>
+						<Alert message={that.props.webCamStore.compareResult} type="success" />
+					</div>
 				</Content>
 			</Layout>
 		);
