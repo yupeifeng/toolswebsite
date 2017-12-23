@@ -39,11 +39,11 @@ export default class WebCam extends React.Component {
 					<Breadcrumb.Item>人脸对比</Breadcrumb.Item>
 				</Breadcrumb>
 				<Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-					<Upload
+					{/*<Upload
 						className="avatar-uploader"
 						name="avatar"
 						showUploadList={false}
-						action="//jsonplaceholder.typicode.com/posts/"
+						action="/user/uploadImg"
 						beforeUpload={file => that._beforeUpload(file)}
 						onChange={info => that._handleChange(info)}>
 						{that.props.webCamStore.uploadImgUrl ? (
@@ -51,8 +51,12 @@ export default class WebCam extends React.Component {
 						) : (
 							<Icon type="plus" className="avatar-uploader-trigger" />
 						)}
-					</Upload>
+					</Upload>*/}
 					<div id="Webcam" />
+					<div>{that.props.webCamStore.uploadImgUrl ? <img src={that.props.webCamStore.uploadImgUrl} /> : null}</div>
+					<Button type="primary" onClick={() => that._getWebcamploadImgUrl()}>
+						拍照
+					</Button>
 					<Button type="primary" onClick={() => that._getWebcamPic()}>
 						人脸对比
 					</Button>
@@ -62,35 +66,42 @@ export default class WebCam extends React.Component {
 		);
 	}
 
-	_beforeUpload(file) {
-		let isJPG = file.type === 'image/jpeg';
-		if (!isJPG) {
-			modalTip.successTip('You can only upload JPG file!');
-		}
-		const isLt2M = file.size / 1024 / 1024 < 2;
-		if (!isLt2M) {
-			modalTip.successTip('Image must smaller than 2MB!');
-		}
-		return isJPG && isLt2M;
-	}
+	/*_beforeUpload(file) {
+        let isJPG = file.type === 'image/jpeg';
+        if (!isJPG) {
+            modalTip.successTip('You can only upload JPG file!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            modalTip.successTip('Image must smaller than 2MB!');
+        }
+        return isJPG && isLt2M;
+    }
 
-	_handleChange(info) {
+    _handleChange(info) {
+        let that = this;
+        if (info.file.status === 'done') {
+            let img = info.file.originFileObj;
+            let reader = new FileReader();
+            reader.addEventListener('load', () => {
+                that.props.changeUploadImgUrl(reader.result);
+            });
+            reader.readAsDataURL(img);
+        }
+    }*/
+
+	_getWebcamploadImgUrl() {
 		let that = this;
-		if (info.file.status === 'done') {
-			let img = info.file.originFileObj;
-			let reader = new FileReader();
-			reader.addEventListener('load', () => {
-				that.props.changeUploadImgUrl(reader.result);
-			});
-			reader.readAsDataURL(img);
-		}
+		Webcam.snap(data_uri => {
+			that.props.changeUploadImgUrl(data_uri);
+		});
 	}
 
 	_getWebcamPic() {
 		let that = this;
 		Webcam.snap(data_uri => {
 			if (!that.props.webCamStore.uploadImgUrl) {
-				modalTip.successTip('请上传对比图片');
+				modalTip.successTip('请拍取对比图片');
 				return;
 			}
 

@@ -4,10 +4,9 @@ import * as rp from 'request-promise-native';
 const router = Router();
 
 const compareFace = async params => {
-	console.log(params);
 	return rp({
 		method: 'POST',
-		uri: `http://172.19.4.95:5000/compareFace`,
+		uri: `http://172.19.4.95:80/compareFace`,
 		body: params,
 		json: true
 	}).then(data => data);
@@ -20,7 +19,11 @@ router.get('/info', (req, res, next) => {
 
 router.post('/compareFace', async (req, res, next) => {
 	let result = await compareFace(req.body);
-	res.json({ result: result.data });
+	res.json(result);
+});
+
+router.post('/uploadImg', async (req, res, next) => {
+	res.json({});
 });
 
 export default router;

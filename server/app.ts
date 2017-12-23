@@ -18,8 +18,8 @@ app.engine('.html', require('ejs').__express);
 app.use(morgan('dev'));
 
 /*请求解析*/
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 /*cookie解析*/
 app.use(cookieParser());

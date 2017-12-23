@@ -1,6 +1,6 @@
-import { Store, action, actionProps, storeProps, storeDestroy } from 'reducermanager';
+import { Store, action, actionProps } from 'reducermanager';
 import fetch from 'fetch/fetch';
-import modalTip from 'modalTip';
+import ModalTip from 'modalTip';
 
 const webCamType = Store.getActionType('webCamStore');
 
@@ -18,11 +18,11 @@ class webCamAction {
 				uploadImgUrl: uploadImgUrl,
 				imgUrl: imgUrl
 			})
-			.then(res => {
-				dispatch({ type: webCamType.change_compareResult, compareResult: res.result });
+			.then(data => {
+				dispatch({ type: webCamType.change_compareResult, compareResult: data });
 			})
 			.catch(e => {
-				modalTip.warningTip(e.message);
+				ModalTip.warningTip(e.message || '');
 			});
 	};
 }

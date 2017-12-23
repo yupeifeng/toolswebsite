@@ -37,8 +37,6 @@ export default class request {
 	static optResponse(res) {
 		if (res.ok && res.status === 200) {
 			return res.json();
-		} else {
-			ModalTip.warningTip('错误的请求！');
 		}
 	}
 
@@ -54,15 +52,15 @@ export default class request {
 				return request.optResponse(res);
 			})
 			.then(data => {
-				if (data.result == 'ok') {
+				if (data.result == 'success') {
 					return Promise.resolve(data.data);
 				} else {
-					ModalTip.warningTip(data.msg);
+					throw new Error(data.data);
 				}
 			})
 			.catch(e => {
 				if (e instanceof Error) {
-					console.error(e.message);
+					throw new Error(e.message);
 				}
 
 				if (e.message === 'Failed to fetch') {
@@ -87,15 +85,15 @@ export default class request {
 				return request.optResponse(res);
 			})
 			.then(data => {
-				if (data.result == 'ok') {
+				if (data.result == 'success') {
 					return Promise.resolve(data.data);
 				} else {
-					ModalTip.warningTip(data.msg);
+					throw new Error(data.data);
 				}
 			})
 			.catch(e => {
 				if (e instanceof Error) {
-					console.error(e.message);
+					throw new Error(e.message);
 				}
 
 				if (e.message === 'Failed to fetch') {
