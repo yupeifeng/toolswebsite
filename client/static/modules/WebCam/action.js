@@ -22,7 +22,11 @@ class webCamAction {
 				dispatch({ type: webCamType.change_compareResult, compareResult: data });
 			})
 			.catch(e => {
-				ModalTip.warningTip(e.message || '');
+				if (e && e.message) {
+					ModalTip.warningTip(e.message || '请求出错');
+				} else {
+					ModalTip.warningTip('请求出错');
+				}
 			});
 	};
 }
