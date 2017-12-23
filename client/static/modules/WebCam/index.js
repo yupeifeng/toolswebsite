@@ -71,7 +71,11 @@ export default class WebCam extends React.Component {
 		);
 	}
 
-	_beforeUpload(file) {
+    static componentWillUnmount(){
+        Webcam.reset('#Webcam');
+    }
+
+    _beforeUpload(file) {
 		let isJPG = file.type === 'image/jpeg';
 		if (!isJPG) {
 			modalTip.successTip('You can only upload JPG file!');
