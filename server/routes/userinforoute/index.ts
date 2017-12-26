@@ -6,7 +6,7 @@ const router = Router();
 const compareFace = async params => {
 	return rp({
 		method: 'POST',
-		uri: `http://127.0.0.1:5000/compareFace`,
+		uri: `http://172.19.4.95/compareFace`,
 		body: params,
 		json: true
 	}).then(data => data);

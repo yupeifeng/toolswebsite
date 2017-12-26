@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Breadcrumb, Button, Icon, Upload, Alert } from 'antd';
+import { Layout, Breadcrumb, Button, Icon, Upload, Alert, Spin } from 'antd';
 import './action';
 import { ConnectStore, actionInjection } from 'reducermanager';
 import $script from 'scriptjs';
@@ -39,33 +39,35 @@ export default class WebCam extends React.Component {
 					<Breadcrumb.Item>人脸对比</Breadcrumb.Item>
 				</Breadcrumb>
 				<Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-					<div>
-						<Alert message="请尽量贴近人脸！！！！！！！！！！！！" type="warning" />
-					</div>
-					<Upload
-						className="avatar-uploader"
-						name="avatar"
-						showUploadList={false}
-						action="/user/uploadImg"
-						beforeUpload={file => that._beforeUpload(file)}
-						onChange={info => that._handleChange(info)}>
-						{that.props.webCamStore.uploadImgUrl ? (
-							<img src={that.props.webCamStore.uploadImgUrl} alt="" className="avatar" />
-						) : (
-							<Icon type="plus" className="avatar-uploader-trigger" />
-						)}
-					</Upload>
-					<div id="Webcam" />
-					<Button type="primary" onClick={() => that._getWebcamploadImgUrl()}>
-						拍照
-					</Button>
-					<Button type="primary" onClick={() => that._getWebcamPic()}>
-						人脸对比
-					</Button>
-					<div>
-						<span>匹配结果</span>
-						<Alert message={that.props.webCamStore.compareResult} type="success" />
-					</div>
+					<Spin tip="Loading..." spinning={that.props.webCamStore.isLoading}>
+						<div>
+							<Alert message="请尽量贴近人脸！！！！！！！！！！！！" type="warning" />
+						</div>
+						<Upload
+							className="avatar-uploader"
+							name="avatar"
+							showUploadList={false}
+							action="/user/uploadImg"
+							beforeUpload={file => that._beforeUpload(file)}
+							onChange={info => that._handleChange(info)}>
+							{that.props.webCamStore.uploadImgUrl ? (
+								<img src={that.props.webCamStore.uploadImgUrl} alt="" className="avatar" />
+							) : (
+								<Icon type="plus" className="avatar-uploader-trigger" />
+							)}
+						</Upload>
+						<div id="Webcam" />
+						<Button type="primary" onClick={() => that._getWebcamploadImgUrl()}>
+							拍照
+						</Button>
+						<Button type="primary" onClick={() => that._getWebcamPic()}>
+							人脸对比
+						</Button>
+						<div>
+							<span>匹配结果</span>
+							<Alert message={that.props.webCamStore.compareResult} type="success" />
+						</div>
+					</Spin>
 				</Content>
 			</Layout>
 		);
@@ -119,6 +121,7 @@ export default class WebCam extends React.Component {
 				return;
 			}
 
+			that.props.changeIsLoading(true);
 			that.props.compareImg(that.props.webCamStore.uploadImgUrl, data_uri);
 		});
 	}

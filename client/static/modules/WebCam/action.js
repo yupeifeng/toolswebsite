@@ -20,6 +20,7 @@ class webCamAction {
 			})
 			.then(data => {
 				dispatch({ type: webCamType.change_compareResult, compareResult: data });
+				dispatch({ type: webCamType.change_isLoading, isLoading: false });
 			})
 			.catch(e => {
 				if (e && e.message) {
@@ -28,5 +29,10 @@ class webCamAction {
 					ModalTip.warningTip('请求出错');
 				}
 			});
+	};
+
+	@actionProps('changeIsLoading')
+	static changeIsLoading = isLoading => async dispatch => {
+		dispatch({ type: webCamType.change_isLoading, isLoading: isLoading });
 	};
 }

@@ -9,4 +9,8 @@ class webCamStore {
 	@storeProps('change_compareResult')
 	@storeDestroy
 	static compareResult = '';
+
+	@storeProps('change_isLoading')
+	@storeDestroy
+	static isLoading = false;
 }
