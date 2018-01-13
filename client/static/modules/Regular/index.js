@@ -29,7 +29,7 @@ export default class Regular extends React.Component {
 							type="textarea"
 							placeholder="请输入匹配文本"
 							value={that.props.regularStore.regularText}
-							onChange={(e) => that._onChangeRegularText(e)}
+							onChange={e => that._onChangeRegularText(e)}
 						/>
 					</div>
 					<div>
@@ -37,7 +37,7 @@ export default class Regular extends React.Component {
 						<Input
 							placeholder="请输入正则规则"
 							value={that.props.regularStore.regularRule}
-							onChange={(e) => that._onChangeRegularRule(e)}
+							onChange={e => that._onChangeRegularRule(e)}
 						/>
 					</div>
 					<Button type="primary" onClick={() => that._onChangeRegularResult()}>

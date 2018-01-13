@@ -7,12 +7,12 @@ const webCamType = Store.getActionType('webCamStore');
 @action('webCamAction')
 class webCamAction {
 	@actionProps('changeUploadImgUrl')
-	static changeUploadImgUrl = uploadImgUrl => async dispatch => {
+	static changeUploadImgUrl = uploadImgUrl => async (dispatch, _this) => {
 		dispatch({ type: webCamType.change_uploadImgUrl, uploadImgUrl: uploadImgUrl });
 	};
 
 	@actionProps('compareImg')
-	static compareImg = (uploadImgUrl, imgUrl) => async dispatch => {
+	static compareImg = (uploadImgUrl, imgUrl) => async (dispatch, _this) => {
 		fetch
 			.post('/user/compareFace', {
 				uploadImgUrl: uploadImgUrl,
@@ -32,7 +32,7 @@ class webCamAction {
 	};
 
 	@actionProps('changeIsLoading')
-	static changeIsLoading = isLoading => async dispatch => {
+	static changeIsLoading = isLoading => async (dispatch, _this) => {
 		dispatch({ type: webCamType.change_isLoading, isLoading: isLoading });
 	};
 }
