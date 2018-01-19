@@ -1,12 +1,12 @@
-import { store, storeProps, storeDestroy } from 'reducermanager';
+import { store, storeActionType, storeDestroy } from 'reduxm';
 
-@store('mD5Store')
+@store('mD5Store', 'change_mD5Store')
 class MD5Store {
-	@storeProps('change_md5String')
+	@storeActionType('change_md5String')
 	@storeDestroy
 	static md5String = '';
 
-	@storeProps('change_md5CodeString')
+	@storeActionType('change_md5CodeString')
 	@storeDestroy
 	static md5CodeString = '';
 }

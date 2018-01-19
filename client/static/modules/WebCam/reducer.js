@@ -1,16 +1,16 @@
-import { store, storeProps, storeDestroy } from 'reducermanager';
+import { store, storeActionType, storeDestroy } from 'reduxm';
 
-@store('webCamStore')
+@store('webCamStore', 'change_webCamStore')
 class webCamStore {
-	@storeProps('change_uploadImgUrl')
+	@storeActionType('change_uploadImgUrl')
 	@storeDestroy
 	static uploadImgUrl = '';
 
-	@storeProps('change_compareResult')
+	@storeActionType('change_compareResult')
 	@storeDestroy
 	static compareResult = '';
 
-	@storeProps('change_isLoading')
+	@storeActionType('change_isLoading')
 	@storeDestroy
 	static isLoading = false;
 }

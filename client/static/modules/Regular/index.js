@@ -1,14 +1,14 @@
 import React from 'react';
 import { Layout, Breadcrumb, Input, Button, Alert } from 'antd';
 import './action';
-import { ConnectStore, actionInjection } from 'reducermanager';
+import { connectStore, actionInjection } from 'reduxm';
 
 const { Content } = Layout;
 
 /**
  * Regular
  */
-@ConnectStore(['regularStore'], ['regularStore'])
+@connectStore(['regularStore'], ['regularStore'])
 @actionInjection('regularAction')
 export default class Regular extends React.Component {
 	componentDidMount() {}

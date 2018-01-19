@@ -1,4 +1,4 @@
-import { Store, action, actionProps } from 'reducermanager';
+import { Store, action, actionProps } from 'reduxm';
 
 const regularType = Store.getActionType('regularStore');
 

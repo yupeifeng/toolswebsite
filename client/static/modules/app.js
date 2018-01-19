@@ -10,7 +10,7 @@ import './MD5/reducer';
 import './Qrcode/reducer';
 import './Regular/reducer';
 import './WebCam/reducer';
-import { Store } from 'reducermanager';
+import { Store } from 'reduxm';
 
 const MD5 = asyncComponent(() => import(/* webpackChunkName: 'MD5' */ './MD5'));
 const Qrcode = asyncComponent(() => import(/* webpackChunkName: 'Qrcode' */ './Qrcode'));

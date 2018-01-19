@@ -1,8 +1,8 @@
-import { store, storeProps, storeDestroy } from 'reducermanager';
+import { store, storeActionType, storeDestroy } from 'reduxm';
 
-@store('qrcodeStore')
+@store('qrcodeStore', 'change_qrcodeStore')
 class qrcodeStore {
-	@storeProps('change_qrcodeString')
+	@storeActionType('change_qrcodeString')
 	@storeDestroy
 	static qrcodeString = '';
 }

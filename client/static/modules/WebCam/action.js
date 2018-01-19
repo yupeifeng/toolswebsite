@@ -1,4 +1,4 @@
-import { Store, action, actionProps } from 'reducermanager';
+import { Store, action, actionProps } from 'reduxm';
 import fetch from 'fetch/fetch';
 import ModalTip from 'modalTip';
 

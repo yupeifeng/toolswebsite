@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Breadcrumb, Input, Button, Icon } from 'antd';
 import modalTip from 'modalTip';
 import './action';
-import { ConnectStore, actionInjection } from 'reducermanager';
+import { connectStore, actionInjection } from 'reduxm';
 import $ from 'jquery';
 import qrcode from 'qrcode';
 
@@ -11,7 +11,7 @@ const { Content } = Layout;
 /**
  * Qrcode
  */
-@ConnectStore(['qrcodeStore'], ['qrcodeStore'])
+@connectStore(['qrcodeStore'], ['qrcodeStore'])
 @actionInjection('qrcodeAction')
 export default class Qrcode extends React.Component {
 	componentDidMount() {

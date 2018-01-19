@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Breadcrumb, Input, Button, Alert } from 'antd';
 import './action';
-import { ConnectStore, actionInjection } from 'reducermanager';
+import { connectStore, actionInjection } from 'reduxm';
 import hexMd5 from '../../util/md5';
 
 const { Content } = Layout;
@@ -9,7 +9,7 @@ const { Content } = Layout;
 /**
  * MD5
  */
-@ConnectStore(['mD5Store'], ['mD5Store'])
+@connectStore(['mD5Store'], ['mD5Store'])
 @actionInjection('mD5Action')
 export default class MD5 extends React.Component {
 	componentDidMount() {}

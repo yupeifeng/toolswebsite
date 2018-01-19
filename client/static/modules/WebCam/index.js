@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Breadcrumb, Button, Icon, Upload, Alert, Spin } from 'antd';
 import './action';
-import { ConnectStore, actionInjection } from 'reducermanager';
+import { connectStore, actionInjection } from 'reduxm';
 import $script from 'scriptjs';
 import modalTip from 'modalTip';
 
@@ -9,7 +9,7 @@ const { Content } = Layout;
 /**
  * WebCam
  */
-@ConnectStore(['webCamStore'], ['webCamStore'])
+@connectStore(['webCamStore'], ['webCamStore'])
 @actionInjection('webCamAction')
 export default class WebCam extends React.Component {
 	componentDidMount() {
