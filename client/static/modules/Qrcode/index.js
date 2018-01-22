@@ -1,8 +1,7 @@
 import React from 'react';
 import { Layout, Breadcrumb, Input, Button, Icon } from 'antd';
-import modalTip from 'modalTip';
-import './action';
 import { connectStore, actionInjection } from 'reduxm';
+import modalTip from 'modalTip';
 import $ from 'jquery';
 import qrcode from 'qrcode';
 

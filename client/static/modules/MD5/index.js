@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Breadcrumb, Input, Button, Alert } from 'antd';
-import './action';
 import { connectStore, actionInjection } from 'reduxm';
 import hexMd5 from '../../util/md5';
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Breadcrumb, Button, Icon, Upload, Alert, Spin } from 'antd';
-import './action';
 import { connectStore, actionInjection } from 'reduxm';
 import $script from 'scriptjs';
 import modalTip from 'modalTip';

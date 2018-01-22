@@ -5,11 +5,14 @@ import { asyncComponent } from 'AsyncComponent';
 import HeaderMenu from './components/heard';
 import SiderMenu from './components/sider';
 import './css/main.css';
-
 import './MD5/reducer';
+import './MD5/action';
 import './Qrcode/reducer';
+import './Qrcode/action';
 import './Regular/reducer';
+import './Regular/action';
 import './WebCam/reducer';
+import './WebCam/action';
 import { Store } from 'reduxm';
 
 const MD5 = asyncComponent(() => import(/* webpackChunkName: 'MD5' */ './MD5'));
