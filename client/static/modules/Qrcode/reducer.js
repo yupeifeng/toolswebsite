@@ -1,8 +1,6 @@
-import { store, storeActionType, storeDestroy } from 'reduxm';
+import { store, storeActionType } from 'reduxm';
 
 @store('qrcodeStore', 'change_qrcodeStore')
 class qrcodeStore {
-	@storeActionType('change_qrcodeString')
-	@storeDestroy
-	static qrcodeString = '';
+	@storeActionType('change_qrcodeString') static qrcodeString = '';
 }

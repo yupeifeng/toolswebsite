@@ -7,10 +7,10 @@ import SiderMenu from './components/sider';
 import './css/main.css';
 
 (r => {
-    r.keys().forEach(r);
+	r.keys().forEach(r);
 })(require.context('./', true, /reducer\.js/));
 (r => {
-    r.keys().forEach(r);
+	r.keys().forEach(r);
 })(require.context('./', true, /action\.js/));
 
 import { Store } from 'reduxm';

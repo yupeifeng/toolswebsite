@@ -72,7 +72,7 @@ export default class WebCam extends React.Component {
 		);
 	}
 
-	static componentWillUnmount() {
+	componentWillUnmount() {
 		Webcam.reset('#Webcam');
 	}
 

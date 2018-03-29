@@ -1,16 +1,10 @@
-import { store, storeActionType, storeDestroy } from 'reduxm';
+import { store, storeActionType } from 'reduxm';
 
 @store('webCamStore', 'change_webCamStore')
 class webCamStore {
-	@storeActionType('change_uploadImgUrl')
-	@storeDestroy
-	static uploadImgUrl = '';
+	@storeActionType('change_uploadImgUrl') static uploadImgUrl = '';
 
-	@storeActionType('change_compareResult')
-	@storeDestroy
-	static compareResult = '';
+	@storeActionType('change_compareResult') static compareResult = '';
 
-	@storeActionType('change_isLoading')
-	@storeDestroy
-	static isLoading = false;
+	@storeActionType('change_isLoading') static isLoading = false;
 }

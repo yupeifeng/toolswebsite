@@ -1,16 +1,10 @@
-import { store, storeActionType, storeDestroy } from 'reduxm';
+import { store, storeActionType } from 'reduxm';
 
 @store('regularStore', 'change_regularStore')
 class regularStore {
-	@storeActionType('change_regularText')
-	@storeDestroy
-	static regularText = '';
+	@storeActionType('change_regularText') static regularText = '';
 
-	@storeActionType('change_regularRule')
-	@storeDestroy
-	static regularRule = '';
+	@storeActionType('change_regularRule') static regularRule = '';
 
-	@storeActionType('change_regularResult')
-	@storeDestroy
-	static regularResult = [];
+	@storeActionType('change_regularResult') static regularResult = [];
 }
