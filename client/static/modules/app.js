@@ -19,6 +19,7 @@ const MD5 = asyncComponent(() => import(/* webpackChunkName: 'MD5' */ './MD5'));
 const Qrcode = asyncComponent(() => import(/* webpackChunkName: 'Qrcode' */ './Qrcode'));
 const Regular = asyncComponent(() => import(/* webpackChunkName: 'Regular' */ './Regular'));
 const WebCam = asyncComponent(() => import(/* webpackChunkName: 'WebCam' */ './WebCam'));
+const Canvas = asyncComponent(() => import(/* webpackChunkName: 'Canvas' */ './Canvas'));
 const AboutMe = asyncComponent(() => import(/* webpackChunkName: 'AboutMe' */ './AboutMe'));
 
 let debug = false;
@@ -33,6 +34,7 @@ const router = Store.createStore(
 				<Route exact path="/tools/Qrcode" component={Qrcode} />
 				<Route exact path="/tools/Regular" component={Regular} />
 				<Route exact path="/tools/WebCam" component={WebCam} />
+				<Route exact path="/tools/Canvas" component={Canvas} />
 				<Route exact path="/about/me" component={AboutMe} />
 				{debug ? Store.getDevTools() : null}
 			</div>
