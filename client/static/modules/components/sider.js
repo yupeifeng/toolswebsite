@@ -72,6 +72,9 @@ export default class SiderMenu extends React.Component {
 						<Menu.Item key="/tools/Canvas">
 							<a href="#/tools/Canvas">水波图</a>
 						</Menu.Item>
+						<Menu.Item key="/tools/FlvJS">
+							<a href="#/tools/FlvJS">flvJs测试</a>
+						</Menu.Item>
 					</SubMenu>
 					<SubMenu
 						key="/about"
