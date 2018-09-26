@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Breadcrumb, Input, Button, Alert } from 'antd';
 import { connectStore, actionInjection } from 'reduxm';
-import hexMd5 from '../../util/md5';
+import hexMd5 from '../../../util/md5';
 
 const { Content } = Layout;
 

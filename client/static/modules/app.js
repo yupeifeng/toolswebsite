@@ -15,13 +15,14 @@ import './css/main.css';
 
 import { Store } from 'reduxm';
 
-const MD5 = asyncComponent(() => import(/* webpackChunkName: 'MD5' */ './MD5'));
-const Qrcode = asyncComponent(() => import(/* webpackChunkName: 'Qrcode' */ './Qrcode'));
-const Regular = asyncComponent(() => import(/* webpackChunkName: 'Regular' */ './Regular'));
-const WebCam = asyncComponent(() => import(/* webpackChunkName: 'WebCam' */ './WebCam'));
-const Canvas = asyncComponent(() => import(/* webpackChunkName: 'Canvas' */ './Canvas'));
-const AboutMe = asyncComponent(() => import(/* webpackChunkName: 'AboutMe' */ './AboutMe'));
-const FlvJS = asyncComponent(() => import(/* webpackChunkName: 'FlvJS' */ './FlvJS'));
+const MD5 = asyncComponent(() => import(/* webpackChunkName: 'MD5' */ './view/MD5'));
+const Qrcode = asyncComponent(() => import(/* webpackChunkName: 'Qrcode' */ './view/Qrcode'));
+const Regular = asyncComponent(() => import(/* webpackChunkName: 'Regular' */ './view/Regular'));
+const WebCam = asyncComponent(() => import(/* webpackChunkName: 'WebCam' */ './view/WebCam'));
+const Canvas = asyncComponent(() => import(/* webpackChunkName: 'Canvas' */ './view/Canvas'));
+const AboutMe = asyncComponent(() => import(/* webpackChunkName: 'AboutMe' */ './view/AboutMe'));
+const FlvJS = asyncComponent(() => import(/* webpackChunkName: 'FlvJS' */ './view/FlvJS'));
+const WebSocket = asyncComponent(() => import(/* webpackChunkName: 'WebSocket' */ './view/WebSocket'));
 
 let debug = false;
 const router = Store.createStore(
@@ -37,6 +38,7 @@ const router = Store.createStore(
 				<Route exact path="/tools/WebCam" component={WebCam} />
 				<Route exact path="/tools/Canvas" component={Canvas} />
 				<Route exact path="/tools/FlvJS" component={FlvJS} />
+				<Route exact path="/tools/WebSocket" component={WebSocket} />
 				<Route exact path="/about/me" component={AboutMe} />
 				{debug ? Store.getDevTools() : null}
 			</div>
