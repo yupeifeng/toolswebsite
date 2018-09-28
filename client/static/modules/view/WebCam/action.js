@@ -13,22 +13,26 @@ class webCamAction {
 
 	@actionProps('compareImg')
 	static compareImg = (uploadImgUrl, imgUrl) => async (dispatch, _this) => {
-		fetch
-			.post('/user/compareFace', {
-				uploadImgUrl: uploadImgUrl,
-				imgUrl: imgUrl
-			})
-			.then(data => {
-				dispatch({ type: webCamType.change_compareResult, compareResult: data });
-				dispatch({ type: webCamType.change_isLoading, isLoading: false });
-			})
-			.catch(e => {
-				if (e && e.message) {
-					ModalTip.warningTip(e.message || '请求出错');
-				} else {
-					ModalTip.warningTip('请求出错');
-				}
-			});
+		let faceMatchResult = {};
+		try {
+			faceMatchResult = await fetch.post('/user/faceMatch', { image: [uploadImgUrl, imgUrl] });
+		} catch (e) {
+			if (e && e.message) {
+				ModalTip.warningTip(e.message || '请求出错');
+			} else {
+				ModalTip.warningTip('请求出错');
+			}
+			dispatch({ type: webCamType.change_isLoading, isLoading: false });
+			return;
+		}
+		dispatch({ type: webCamType.change_isLoading, isLoading: false });
+		dispatch({
+			type: webCamType.change_compareResult,
+			compareResult:
+				faceMatchResult.result && faceMatchResult.result.score
+					? `相似度：${faceMatchResult.result && faceMatchResult.result.score}`
+					: '识别失败'
+		});
 	};
 
 	@actionProps('changeIsLoading')

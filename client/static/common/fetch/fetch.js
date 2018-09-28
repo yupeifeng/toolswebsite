@@ -72,12 +72,10 @@ export default class request {
 	static post(url, params) {
 		let _opt = request.option.toJS();
 		_opt.headers.Authorization = '';
-		_opt.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 		_opt.method = 'POST';
 
-		let arr = request.getParamsArray(params);
-		if (arr.length > 0) {
-			_opt.body = arr.join('&');
+		if (params) {
+			_opt.body = JSON.stringify(params);
 		}
 
 		return fetch(url, _opt)
