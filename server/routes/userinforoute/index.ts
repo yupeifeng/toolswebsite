@@ -51,7 +51,8 @@ router.post('/faceMatch', async (req, res, next) => {
 	image.forEach(e => {
 		params.push({
 			image: e.split('data:image/jpeg;base64,')[1],
-			image_type: 'BASE64'
+			image_type: 'BASE64',
+            liveness_control: 'NORMAL'
 		});
 	});
 
