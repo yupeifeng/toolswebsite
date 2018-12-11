@@ -1,8 +1,8 @@
-var assetsViews = require('./assets-views');
 var pathTool = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin'); //css单独打包
-var css_path = '../build/style.css';
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -52,13 +52,11 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new CleanWebpackPlugin('./build/*.*'),
 		new webpack.DefinePlugin({}),
-		assetsViews({
-			gloabal: {
-				cssPath: css_path
-			},
-			from: './views/',
-			to: '../WEB-INF/'
+		new HtmlWebpackPlugin({
+			template: './views/main.ejs',
+			filename: '../../WEB-INF/main.html'
 		}),
 		new ExtractTextPlugin({
 			filename: 'style.css',
