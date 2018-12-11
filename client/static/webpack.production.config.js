@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin'); //css单独打包
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 module.exports = {
 	entry: {
@@ -55,9 +56,11 @@ module.exports = {
 		new CleanWebpackPlugin('./build/*.*'),
 		new webpack.DefinePlugin({}),
 		new HtmlWebpackPlugin({
+			alwaysWriteToDisk: true,
 			template: './views/main.ejs',
 			filename: pathTool.resolve(__dirname, '../WEB-INF/main.html')
 		}),
+		new HtmlWebpackHarddiskPlugin(),
 		new ExtractTextPlugin({
 			filename: 'style.css',
 			disable: false,
