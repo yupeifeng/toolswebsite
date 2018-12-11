@@ -56,7 +56,7 @@ module.exports = {
 		new webpack.DefinePlugin({}),
 		new HtmlWebpackPlugin({
 			template: './views/main.ejs',
-			filename: '../../WEB-INF/main.html'
+			filename: pathTool.resolve(__dirname, '../WEB-INF/main.html')
 		}),
 		new ExtractTextPlugin({
 			filename: 'style.css',
